@@ -1,0 +1,248 @@
+
+  body {
+    background-color: #36393F;
+    font-family: Computer Modern;
+  }  
+  h2 {
+    font-weight: normal;
+    text-align: center;
+    font-size: 22px;
+    margin: 40px 0 20px 0;
+    color: white;
+    
+  }
+
+  
+  h3 {
+    font-weight: normal;
+    text-align: center;
+    font-size: 18px;
+    margin: 20px 0 20px 0;
+    color: white;
+  }
+
+  label {
+    display: inline-block;
+    clear: left;
+    width: 93px;
+    text-align: right;
+  }
+
+  form {
+    display: center;
+    text-align: center;
+    margin: 40px 0;
+    color: white;
+  }
+  
+  input[type="text"]{
+    padding: 8px 10px;
+    font-size: 18px;
+    color: white;
+    justify-content: flex-end;
+    flex-direction: row;
+    margin-right: 85px;
+    background-color: #424549;
+    border-radius: 15px;
+    border: hidden;
+    
+  }
+
+  select {
+    padding: 8px 10px;
+    font-size: 18px;
+    color: white;
+    justify-content: flex-end;
+    flex-direction: row;
+    margin-right: 85px;
+    background-color: #424549;
+    border-radius: 15px;
+    border: hidden;
+  }
+
+  p.left {
+    word-break: break-all;
+    overflow-wrap: break-word;
+  }
+
+  .guide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    word-break: break-all;
+    margin: 0;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    color: white;
+    width: 200px; 
+    overflow-wrap: break-word;
+    flex-direction: column; 
+  }
+
+  p.middle1 {
+    word-break: break-word;
+    line-height: 1.5;
+    color: white;
+    text-align: center;
+    width: 150px;
+    font-weight: normal;
+  }
+
+  p.guide1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    margin-top: 0px;
+    word-break: break-all;
+    overflow-wrap:normal;
+  }
+
+  .row {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .column {
+    width: 25%;
+    color: white;
+    word-break: break-all;
+    overflow-wrap: break-word;
+  }
+
+  .problem {
+    color: white;
+    text-align: center;
+    font-weight: normal;
+  }
+
+  .work {
+    color: white;
+  }
+  .method {
+    font-family: Computer Modern;
+
+  }
+  .please {
+    opacity: .30;
+  }
+
+
+  ::placeholder{
+    opacity: .30;
+    font-family: Computer Modern;
+  }
+  button[type="button"] {
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 18px;
+    background-color: #7289da;
+    font-family: Computer Modern;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #output {
+    text-align: center;
+    font-size: 18px;
+    margin: 20px 0;
+    margin-bottom: 5px;
+    color: white;
+  }
+
+  p.functions{
+    color: white;
+    font-family: Computer Modern;
+    text-align: center;
+  }
+
+  p.content{
+    text-align: center;
+    color: white;
+  }
+
+
+
+  p.work1 {
+    word-break: break-word;
+  }
+
+  .format {
+    display: flex;
+    justify-content: center;
+  }
+
+  h1.left {
+    word-break: break-word;
+    line-height: 1.5;
+    color: white;
+    text-align: center;
+    width: 800px;
+    font-weight: normal;
+  }
+
+  img.middle {
+    justify-content: center;
+  }
+
+  p.middle {
+    word-break: break-word;
+    line-height: 1.5;
+    color: white;
+    text-align: center;
+    width: 800px;
+    font-weight: normal;
+  }
+
+  p.left {
+    word-break: break-word;
+    line-height: 1.5;
+    color: white;
+    text-align: left;
+    width: 800px;
+  }
+
+  .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .tab {
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: normal;
+    font-family: Computer Modern;
+    color: white;
+    text-decoration: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  .tab.active {
+    
+    border-color: #000;
+    border-bottom: 1px solid white;
+  }
+  .tab-content {
+    display: none;
+    padding: 20px;
+    border: none;
+  }
+  .tab-content.active {
+    display: block;
+  }
+  .alignment {
+    text-align: center;
+  }
+
+  .form_field{
+    display: none;
+  }

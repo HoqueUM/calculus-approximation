@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Area Approximation</title>
+    <!-- importing javascript libraries to interpret latex code -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- importing personally created external files -->
+    <script src="honors.js"></script>
+    <link rel="stylesheet" type="text/css" href="honors.css">
+
+
+
+
+
+
+  </head>
+  <body>
+    <h2 class = "">Area Approximation Using Riemann Sums and Simpson's Rule</h2>
+    <h3 class="">By: Rahul Hoque</h3>
+    <div class="alignment">
+      <button class="tab active" onclick="openTab(event, 'tab1')">Calculator</button>
+      <button class="tab" onclick="openTab(event, 'tab2')">Calculations</button>
+      <button class="tab" onclick="openTab(event, 'tab3')">Research and Citations</button>
+    </div>
+    <div id="tab1" class="tab-content active">
+     
+      <p id="output">Enter a function to see the approximation!</p>
+        <div class="guide">
+          <h3>How to Use:</h3>
+        <div clas="format1">
+        <p class="middle1">
+          Functions must be entered in CODING SYNTAX ONLY (√ = sqrt(), multiplication = *)
+        </p>
+        </div>
+        </div>
+        <form>
+         
+          <label>Function:</label> <input name="fx" type="text" id="fx" autocomplete="off" placeholder = "Function"><br><br>
+          <div class="fixed"></div><label>Lower Bound:</label> <input name="a" type="text" id="a" autocomplete="off" placeholder="Lower Bound"><br><br>
+          <label>Upper Bound:</label> <input name="b" type="text" id="b" autocomplete="off" placeholder = "Upper Bound"><br><br>
+          <label>Intervals:</label> <input name="n"  type="text" id="n" autocomplete="off" placeholder="Intervals"><br><br>
+          <label>Method:</label>
+          <select name="method" type="text" id="method" class="method" placeholder="Method">
+            <option value="left">left</option>
+            <option value="right">right</option>
+            <option value="midpoint">midpoint</option>
+            <option value="trapezoid">trapezoid</option>
+            <option value="simpson">simpson</option>
+          </select><br><br>
+          <button type="button" onclick="riemann_sum()">Approximate</button>
+        </form>
+       
+    </div>
+    <div id="tab2" class="tab-content">
+      <p class="functions">
+        The following are two problems taken from the textbook.
+        <br>
+        <br>
+        <h2 class="problem">7.1.35:</h2>
+        <div class="row">
+          <div class="column">
+            <h2 class ="work">Analytic Solution:</h2>
+            \[\int_{1}^{2}{x^4(\ln{x})^2}dx\]
+            Using integration by parts:
+            \[\int{}{}{udv} = uv - \int{}{}{vdu}\]
+            \[\int_{1}^{2}{x^4(\ln{x})^2dx} = \frac{x^5(\ln{x})^2}{5} - \frac{2}{5}\int_{1}^{2}{x^4\ln{x}dx}\]
+            This also requires integration by parts:
+            \[\int_{1}^{2}{x^4\ln{x}dx}\]
+            \[\int_{1}^{2}{x^4\ln{x}dx} = \frac{x^5\ln{x}}{5} - \frac{1}{5} \int_{1}^{2}{x^4dx}\]
+            \[\int_{1}^{2}{x^4\ln{x}dx} = \frac{x^5\ln{x}}{5} - \frac{x^5}{25}\]
+            So:
+            \[\int_{1}^{2}{x^4(\ln{x})^2 dx} = \frac{x^5(\ln{x})^2}{5} - \left(\frac{x^5\ln{x}}{5} - \frac{x^5}{25}\right)\]
+            \[= \left[\frac{x^5(\ln{x})^2}{5} - \left(\frac{x^5\ln{x}}{5} - \frac{x^5}{25}\right)\right]_{1}^{2}\]
+            \[= \left(\frac{2^5(\ln{2})^2}{5} - \left(\frac{2^5\ln{2}}{5} - \frac{2^5}{25}\right)\right)\]
+            \[ - \left(\frac{1^5(\ln{1})^2}{5} - \left(\frac{1^5\ln{1}}{5} - \frac{1^5}{25}\right)\right)\]
+            \[\approx{1.796} \]
+           
+   
+          </div>
+          <div class="column">
+            <h2 class="work">Calculator Solution:</h2>
+            <br>
+            <br>
+            <h3>h = 1</h3>
+            <p class="work1">
+              Left: 0
+              Right: 7.687
+              Midpoint: 0.832
+              Trapezoid: 3.844
+              Simpson's Rule: 0
+            </p>
+            <h3>h = 5</h3>
+            <p class="work1">
+              Left: 1.116
+              Right: 2.653
+              Midpoint: 1.753
+              Trapezoid: 1.884
+              Simpson's Rule: 0.704
+            </p>
+            <h3>h = 10</h3>
+            <p class="work1">
+              Left: 1.434
+              Right: 2.203
+              Midpoint: 1.785
+              Trapezoid: 1.818
+              Simpson's Rule: 1.797
+            </p>
+            <h3>h = 25</h3>
+            <p class="work1">
+              Left: 1.646
+              Right: 1.954
+              Midpoint: 1.795
+              Trapezoid: 1.8
+              Simpson's Rule: 1.509
+            </p>
+            <h3>h = 50</h3>
+            <p class="work1">
+              Left: 1.72
+              Right: 1.874
+              Midpoint: 1.796
+              Trapezoid: 1.797
+              Simpson's Rule: 1.796
+            </p>
+            <h3>h = 100</h3>
+            <p class="work1">
+              Left: 1.758
+              Right: 1.835
+              Midpoint: 1.796
+              Trapezoid: 1.797
+              Simpson's Rule: 1.796
+            </p>
+          </div>
+        </div>
+        <h2 class="problem">7.3.22:</h2>
+        <div class="row">
+          <div class="column">
+            <h2 class="work">Analytic Solution:</h2>
+            \[\int_{0}^{1}{\sqrt[]{x^2 + 1} dx}\]
+            Using Trigonometric Substitution:
+            \[\sqrt{a^2 + x^2} \Rightarrow x = a\tan\theta\]
+            \[x = \tan\theta\]
+            \[x^2 = \tan^2\theta\]
+            \[dx = \sec^2\theta d\theta\]
+            \[\int_{0}^{1}{\sqrt{\tan^2\theta + 1}\sec^2\theta d\theta}\]
+            \[\tan^2\theta + 1 = \sec^2\theta\]
+            So:
+            \[\int_{0}^{1}{\sqrt{\sec^2\theta}\sec^2\theta d\theta}\]    
+            \[\int_{0}^{1}{\sec\theta \sec^2\theta d\theta}\]  
+            We must now use integration by parts:
+            \[\int_{0}^{1}{\sec\theta \sec^2\theta d\theta} = \sec\theta \tan\theta - \int_{}^{}{\sec^2\theta \tan^2\theta d\theta}\]
+            \[\int_{0}^{1}{\sec\theta \sec^2\theta d\theta} = \sec\theta \tan\theta - \int_{}^{}{\sec^3\theta d\theta} + \int_{}^{}{\sec\theta d\theta}\]
+            \[\int_{0}^{1}{\sec\theta \sec^2\theta d\theta} = \sec\theta \tan\theta + \ln{|\sec\theta + \tan\theta|}\]
+            So:
+            \[\int_{0}^{1}{\sec\theta \sec^2\theta d\theta} = \frac{1}{2}\left(\sec\theta \tan\theta + \ln{|\sec\theta + \tan\theta|}\right)\]
+            \[\theta = \tan^{-1}(x)\]
+            \[o: x\]
+            \[a: 1\]
+            \[h: \sqrt{x^2 + 1}\]
+            So:
+            \[\int_{0}^{1}{\sqrt[]{x^2 + 1} dx} = \frac{1}{2}\left(x\sqrt{x^2 + 1} + \ln(\sqrt{x^2 + 1} + x)\right)\]
+            \[= \left[\frac{1}{2}\left(x\sqrt{x^2 + 1} + \ln(\sqrt{x^2 + 1} + x)\right)\right]_{0}^{1}\]
+            \[= \left(\frac{1}{2}\left(1\sqrt{1^2 + 1} + \ln(\sqrt{1^2 + 1} + 1)\right)\right)\]
+            \[- \left(\frac{1}{2}\left(0\sqrt{0^2 + 1} + \ln(\sqrt{0^2 + 1} + 0)\right)\right)\]
+            \[\approx{1.148}\]
+
+
+          </div>
+          <div class="column">
+            <h2 class="work">Calculator Solution:</h2>
+            <br>
+            <br>
+            <h3>h = 1</h3>
+            <p class="work1">
+              Left: 1
+              Right: 1.414
+              Midpoint: 1.118
+              Trapezoid: 1.207
+              Simpson's Rule: 0
+            </p>
+            <h3>h = 5</h3>
+            <p class="work1">
+              Left: 1.109
+              Right: 1.192
+              Midpoint: 1.147
+              Trapezoid: 1.15
+              Simpson's Rule: 0.879
+            </p>
+            <h3>h = 10</h3>
+            <p class="work1">
+              Left: 1.128
+              Right: 1.169
+              Midpoint: 1.147
+              Trapezoid: 1.148
+              Simpson's Rule: 1.148
+            </p>
+            <h3>h = 25</h3>
+            <p class="work1">
+              Left: 1.14
+              Right: 1.156
+              Midpoint: 1.148
+              Trapezoid: 1.148
+              Simpson's Rule: 1.092
+            </p>
+            <h3>h = 50</h3>
+            <p class="work1">
+              Left: 1.144
+              Right: 1.152
+              Midpoint: 1.148
+              Trapezoid: 1.148
+              Simpson's Rule: 1.148
+            </p>
+            <h3>h = 100</h3>
+            <p class="work1">
+              Left: 1.146
+              Right: 1.15
+              Midpoint: 1.148
+              Trapezoid: 1.148
+              Simpson's Rule: 1.148
+            </p>
+          </div>
+        </div>
+      </p>
+    </div>
+    <div id="tab3" class="tab-content">
+      <div class="format">
+      <h1 class="left">Advantages and Disadvantages</h1>
+      </div>
+      <div class="format">
+        <p class="left">
+          There are many strategies for computing the area under the curve of a function numerically. Among these, the most employed techniques include the Left-side Approximation, Right-side Approximation, Midpoint Approximation, Trapezoidal Approximation, and Simpson's Rule. These methods have unique features and are each useful under specific circumstances.
+          <br></br>
+          It is important to recognize that no single method solves every problem accurately, as each approach comes with its own set of advantages and disadvantages. The practitioner must take into account the specificities of the function being evaluated when selecting a technique and exercise caution when interpreting the results.
+          <br></br>
+          For instance, the Left-side and Right-side Approximations are straightforward and simple to apply, but they can result in either overestimation or underestimation of the integral, depending on the nature of the function being evaluated.
+          <br></br>
+          <img src="left.png" style="display: block; margin: auto;">
+          <br></br>
+          <img src="right.png" style="display: block; margin: auto;">
+          <br></br>
+          The Midpoint Approximation, on the other hand, is more accurate for functions with steep gradients, but it can still be imprecise when dealing with non-smooth points.
+          <br></br>
+          <img src="midpoint.png" style="display: block; margin: auto;">
+          <br></br>
+          Moving on to the Trapezoidal Approximation, this method is a more advanced approach than either the Left-side or Right-side Approximations. It is much easier to implement than other applications, but it can also be imprecise when dealing with non-smooth points.
+          <br></br>
+          <img src="trapezoid.png" style="display: block; margin: auto;">
+          <br></br>
+          Finally, Simpson's Rule is the most accurate of the methods, with the added benefit of being more precise for a broader range of functions. Nevertheless, this comes at the expense of increased computational complexity and resource consumption.
+          <br></br>
+          <img src="simpson.png" style="display: block; margin: auto;">
+          <br></br>
+          The choice of method for calculating the area under the curve of a function requires careful consideration of the function being evaluated and the specific circumstances in which the method is being used. While each of the techniques discussed here has its own advantages and disadvantages, the ultimate goal is to ensure that the results obtained are both accurate and meaningful.
+          <br></br>
+      </p>
+      </div>
+      <div class="format">
+      <h1 class="left">Python NumPy vs Javascript Math</h1>
+      </div>
+      <div class="format">
+        <p class="left">
+          Python and JavaScript are two of the most popular programming languages that offer a wide range of tools and libraries for performing complex mathematical calculations. Among these, the most powerful library for mathematical programming in Python is NumPy, which provides an set of tools for working with arrays, matrices, and other numerical data structures. With NumPy, users can perform complex operations on large datasets with just a few lines of code, making it a popular choice for data scientists and researchers.
+          <br></br>
+          JavaScript, however, offers the Math library, which provides a set of basic mathematical functions such as trigonometric, logarithmic, and exponential functions, as well as basic arithmetic operations. While these two libraries have similar applications, the Math library in JavaScript lacks the more advanced array manipulation and broadcasting capabilities of NumPy, making it more suitable for simpler tasks and basic arithmetic operations.
+          <br></br>
+          One of the key differences between NumPy and Math is their approach to arrays. NumPy provides a broad range of functions for performing operations on arrays, such as element-wise addition, subtraction, multiplication, and division, as well as more complex operations like matrix multiplication and dot products. NumPy's broadcasting feature allows for operations to be performed on arrays of different shapes and sizes, as long as they are compatible, making it easier to perform complex operations on large datasets without the need for explicit loops.
+          <br></br>
+          In contrast, the Math library in JavaScript mainly deals with single values and provides functions for basic arithmetic operations like addition, subtraction, multiplication, and division. While it does offer some more advanced functions like trigonometric and exponential functions, it lacks the array manipulation and broadcasting capabilities of NumPy, making it less suited for complex mathematical tasks.
+          <br></br>
+          As a result, JavaScript developers often need to use additional libraries or write custom code to perform complex mathematical operations on arrays. While NumPy may require more computational resources and memory, its powerful capabilities make it a popular choice for data analysis, scientific computing, and other applications that involve complex mathematical calculations.
+          <br></br>
+          Both Python and JavaScript offer powerful tools for mathematical programming, but the NumPy library in Python is better suited for complex mathematical tasks involving arrays and large datasets, while the Math library in JavaScript is more appropriate for simpler tasks and basic arithmetic operations. The choice of programming language and library depends on the specific requirements of the task at hand, as well as the resources available to the developer.
+        </p>
+      </div>
+      <div class="format">
+      <h1 class="left">Citations</h1>
+      </div>
+      <div class="format">
+        <p class="middle">
+          Stewart, James. <cite>Calculus: Early Transcentals</cite>, 8th Ed.
+          <br></br>
+          Burden, R. L., & Faires, J. D. (2010). <cite>Numerical analysis (9th ed.)</cite>. Brooks/Cole.
+          <br></br>
+          Travis E, Oliphant. A guide to NumPy. USA: Trelgol Publishing, 2006. Available at: <a href="https://numpy.org/doc/stable/">numpy.org</a>
+          <br></br>
+          Mozilla Contributors. Math. Mozilla Developer Network, 2021. Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math">developer.mozilla.org</a>
+
+
+        </p>
+      </div>
+
+    <script>
+      //persisting the user's inputs
+      const form = document.querySelector('form');
+      const formFields = document.querySelector('.form-fields');
+      form.addEventListener('focus', () => {
+        formFields.forEach(field => {
+          field.style.display = 'block';
+        });
+      });
+      //allowing the user to change tabs
+     
+      function openTab(evt, tabName) {
+        var i, tabContent, tabLinks;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+          tabContent[i].className = tabContent[i].className.replace(" active", "");
+        }
+        tabLinks = document.getElementsByClassName("tab");
+        for (i = 0; i < tabLinks.length; i++) {
+          tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).className += " active";
+        evt.currentTarget.className += " active";
+      }
+    </script>
+  </body>
+</html>
+
+
+
